@@ -1,19 +1,17 @@
 def calculate_hand_value(hand: list[dict]) -> int:
 
-def deal_two_each(deck: list[dict], player: dict, dealer: dict) -> None:
+    card = hand[0]["rank"]
+    value = 0
 
-def dealer_play(deck: list[dict], dealer: dict) -> bool:
+    try:
+        value = int(card)
+    except:
+        if card == "A":
+            value = 1
+        else:
+            value = 10
 
-def run_full_game(deck: list[dict], player: dict, dealer: dict) -> None:
-
-
-
-
-
-
-
-
-
+    return value
 
 
 
@@ -21,14 +19,9 @@ def run_full_game(deck: list[dict], player: dict, dealer: dict) -> None:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+#
+# def deal_two_each(deck: list[dict], player: dict, dealer: dict) -> None:
+#
+# def dealer_play(deck: list[dict], dealer: dict) -> bool:
+#
+# def run_full_game(deck: list[dict], player: dict, dealer: dict) -> None:

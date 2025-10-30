@@ -59,8 +59,7 @@ def check_card(card):
         if int(card) % check != 0:
             return True
     except:
-        match card["rank"]:
-            case "J", "Q", "K":
+        if card["rank"] == "J" or card["rank"] == "Q" or card["rank"] == "K":
                 if 10 % check != 0:
                     return True
 
