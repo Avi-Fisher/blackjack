@@ -26,7 +26,7 @@ def deal_two_each(deck: list[dict], player: dict, dealer: dict) -> None:
     print(f"dealer value is {calculate_hand_value(dealer)}")
 
 def dealer_play(deck: list[dict], dealer: dict) -> bool:
-    value = 0
+    value = calculate_hand_value(dealer)
 
     while value < 17:
         dealer["hand"].append(deck.pop(0))
@@ -40,9 +40,7 @@ def dealer_play(deck: list[dict], dealer: dict) -> bool:
 
 def run_full_game(deck: list[dict], player: dict, dealer: dict) -> None:
     deal_two_each(deck,player,dealer)
-
     value_plyer = calculate_hand_value(player)
-    dealer_value = calculate_hand_value(dealer)
 
     while True:
         user_play = ask_player_action()
@@ -53,19 +51,25 @@ def run_full_game(deck: list[dict], player: dict, dealer: dict) -> None:
             print(f"your vlaue is {value_plyer}")
 
             if value_plyer > 21:
-                print("you lose")
+                print("you lose!")
                 exit("goodbye")
 
         elif user_play == "S":
+            dealer_value = calculate_hand_value(dealer)
+
             if dealer_value > value_plyer:
                 print("you lose")
-                exit("goodbye")
+                exit("goodbye!")
 
-            elif not dealer_value:
-                print("you winnn !!!!")
+            if not dealer_play(deck,dealer):
+                dealer_value = calculate_hand_value(dealer)
+                print("you winnn ! ! ! !")
                 exit("goodbye")
+            else:
+                dealer_value = calculate_hand_value(dealer)
 
-            elif dealer_value < value_plyer:
+
+            if dealer_value < value_plyer:
                 print("you winnn !!!!!")
                 exit("goodbye")
 
